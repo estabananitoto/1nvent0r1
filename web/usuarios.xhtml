@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>CRUD_Usuarios</title>
+        <body bgcolor="#191919"></body>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+           <h:graphicImage class="logo" value="/resources/images/logito.png"></h:graphicImage>
+        <f:event type="preRenderView" listener="#{usuariosBean.listar()}"/>
+        <h:form>
+            <center><h2 style="color: #ffbf00;">Usuarios</h2></center>
+            <p:commandButton value="Crear Usuario"  onclick="PF('wdlgNPer').show()" style="color: #ffbf00; background-color: #191919"/>
+            <p:commandButton ajax="false" value="XLS" style="margin-left: 10px;">
+                <p:dataExporter type="xls" target="tblUsu" fileName="Usuarios"/> 
+            </p:commandButton>
+            <p:commandButton ajax="false" value="PDF" style="margin-left: 10px;">
+                <p:dataExporter type="pdf" target="tblUsu" fileName="Usuarios"/>
+            </p:commandButton>  
+
+            <p:dataTable value="#{usuariosBean.lstusu}" filteredValue="#{usuariosBean.lstusuFiltrada}"
+                         var="usu" rows="5" paginator="true" paginatorPosition="bottom" widgetVar="wtblPer" id="tblusu"
+                         paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                         rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"> 
+                <f:facet name="header">
+                    <div align="right">
+                        <span>Buscar:</span>
+                        <p:inputText id="globalFilter" onkeyup="PF('wtblPer').filter()" />
+                    </div>
+                </f:facet>
+
+                <p:column filterBy="#{usu.identificacion}" filterMatchMode="contains">
+                    <f:facet name="header">Identificación</f:facet>
+                    <h:outputLabel value="#{usu.identificacion}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">ID:_Rol</f:facet>
+                    <h:outputLabel value="#{usu.id_rol}"/>
+                </p:column>
+
+                <p:column filterBy="#{usu.nombres}" filterMatchMode="contains">
+                    <f:facet name="header">Nombre</f:facet>
+                    <h:outputLabel value="#{usu.nombres}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Telefono</f:facet>
+                    <h:outputLabel value="#{usu.telefono}"/>
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">Mail</f:facet>
+                    <h:outputLabel value="#{usu.mail}"/>
+                </p:column>
+
+                <p:column exportable="false">
+                    <f:facet name="header">Editar</f:facet>
+                    <p:commandLink value="Editar" actionListener="#{usuariosBean.buscar(usu)}"
+                                   oncomplete="PF('wdlgEPer').show()" update="dlgEPer" />
+                    <h:commandLink value="Eliminar" style="margin-left: 10px;"
+                                   onclick="return confirm('¡¡¿Está seguro de Eliminar la Persona?!!')"
+                                   actionListener="#{usuariosBean.eliminar(usu)}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        
+        <p:dialog id="dlgNPer" widgetVar="wdlgNPer" header="Nuevo Usuario">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Identificacion" />
+                    <h:inputText value="#{usuariosBean.usuarios.identificacion}" required="true" />
+                    
+                    <h:outputLabel value="ID:_Rol" />
+                    <h:selectOneMenu value="#{usuariosBean.usuarios.id_rol}" required="true" >
+                        <f:selectItem itemLabel="1" itemValue="1" />
+                        <f:selectItem itemLabel="2" itemValue="2" />
+                        <f:selectItem itemLabel="3" itemValue="3" />
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Nombres" />
+                    <h:inputText value="#{usuariosBean.usuarios.nombres}" required="true" />
+                    
+                    <h:outputLabel value="Telefono" />
+                    <h:inputText value="#{usuariosBean.usuarios.telefono}" required="true" />
+                    
+                    <h:outputLabel value="Mail" />
+                    <h:inputText value="#{usuariosBean.usuarios.mail}" required="true" />
+                    
+                    <h:column/>
+                    <h:commandButton value="Guardar" actionListener="#{usuariosBean.agregar()}" />
+                </h:panelGrid>              
+            </h:form>
+        </p:dialog>
+
+        <p:dialog id="dlgEPer" widgetVar="wdlgEPer" header="Editar usuario">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Identificacion" />
+                    <h:inputText value="#{usuariosBean.usuarios.identificacion}" required="true" />
+                    
+                    <h:outputLabel value="ID:_Rol" />
+                    <h:selectOneMenu value="#{usuariosBean.usuarios.id_rol}" required="true" >
+                        <f:selectItem itemLabel="1" itemValue="1" />
+                        <f:selectItem itemLabel="2" itemValue="2" />
+                        <f:selectItem itemLabel="3" itemValue="3" />
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="Nombres" />
+                    <h:inputText value="#{usuariosBean.usuarios.nombres}" required="true" />
+                    
+                    <h:outputLabel value="Telefono" />
+                    <h:inputText value="#{usuariosBean.usuarios.telefono}" required="true" />
+                    
+                    <h:outputLabel value="Mail" />
+                    <h:inputText value="#{usuariosBean.usuarios.mail}" required="true" />
+                    
+                    <h:commandButton value="Guardar" actionListener="#{usuariosBean.actualizar()}" />
+         
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
+    </h:body>
+</html>
+

@@ -1,0 +1,129 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20/09/2022, 09:05:41 AM
+    Author     : ESTEBAN
+*/
+
+#body{
+    margin: 0;
+    font-family: var(--bs-font-sans-serif);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #191919;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;}
+
+.ui-datatable .ui-datatable-header {
+    border-bottom: 0 none;
+    background: #191919;
+}
+
+
+.ui-widget-header {
+    border: 1px solid #ffbf00;
+    color: #333;
+    font-weight: bold;
+
+}
+
+.ui-datatable thead th{
+    background:#191919;
+    text-shadow:0 1px 0 rgb(255 208 17 / 70%);
+    color:#ffbf00;
+}
+
+
+.ui-paginator.ui-paginator-bottom{
+    background:#191919;
+}
+
+.ui-paginator .ui-paginator-current{
+    color:#ffbf00
+    
+}
+
+.ui-paginator .ui-paginator-page{
+    background: #ffbf00;
+}
+
+.ui-state-default{
+    color: #ffbf00;
+    background: #191919;
+    border: 1px solid #ffbf00;
+}
+
+.ui-datatable .ui-column-filter{
+    background: #cfcdcc;
+}
+
+.ui-paginator .ui-paginator-rpp-options {
+    background: #ffbf00;
+}
+
+.ui-widget-content {
+    border: 1px solid #ffbf00;
+    color: #4f4f4f;
+   
+}
+
+
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield{
+    background: #cfcdcc;
+}
+
+
+.logo{
+    width: 300px;
+    
+    
+}
+
+ .footer{	
+    background-color: #FFBF00;
+    padding: 1em 0;
+    text-align: center;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 0;
+    padding: 0.5em 1em;
+    background: #191919;
+    overflow: auto;
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    color:#FFBF00;
+}
+
+.ui-draggable .ui-dialog-titlebar{
+    
+    background: #FFBF00;
+    
+    
+}
+
+.hr{
+    background: #FFBF00;
+}
+
+.logo{
+    width:300px;
+}
+
+.boton{
+    background:#FFBF00;
+    color:#000000;
+}
+
+

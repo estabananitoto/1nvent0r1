@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Crud_Medida</title>
+        <body bgcolor="#191919"></body>
+        <h:outputStylesheet library="css" name="style.css"/>
+    </h:head>
+    <h:body>
+           <h:graphicImage class="logo" value="/resources/images/logito.png"></h:graphicImage>
+        <f:event type="preRenderView" listener="#{medidaBean.listar()}"/>
+        <h:form>
+            <center><h2 style="color: #ffbf00;">medida</h2></center>
+            <p:commandButton value="Crear Medida"  onclick="PF('wdlgNPer').show()" style="color: #ffbf00; background-color: #191919"/>
+            <p:commandButton ajax="false" value="XLS" style="margin-left: 10px;">
+                <p:dataExporter type="xls" target="tblmed" fileName="Medida"/> 
+            </p:commandButton>
+            <p:commandButton ajax="false" value="PDF" style="margin-left: 10px;">
+                <p:dataExporter type="pdf" target="tblmed" fileName="Medida"/>
+            </p:commandButton>
+
+            <p:dataTable value="#{medidaBean.lstmed}" filteredValue="#{medidaBean.lstmedFiltrada}"
+                         var="m" rows="5" paginator="true" paginatorPosition="bottom" widgetVar="wtblPer" id="tblmed"
+                         paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                         rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"> 
+                <f:facet name="header">
+                    <div align="right">
+                        <span>Buscar:</span>
+                        <p:inputText id="globalFilter" onkeyup="PF('wtblPer').filter()" />
+                    </div>
+                </f:facet>
+
+                <p:column filterBy="#{m.id_medida}" filterMatchMode="contains">
+                    <f:facet name="header">id_medida</f:facet>
+                    <h:outputLabel value="#{m.id_medida}"/>
+                </p:column>
+
+                <p:column filterBy="#{m.unidadmedida}" filterMatchMode="contains">
+                    <f:facet name="header">unidadmedida</f:facet>
+                    <h:outputLabel value="#{m.unidadmedida}"/>
+                </p:column>
+
+                <p:column exportable="false">
+                    <f:facet name="header">Editar</f:facet>
+                    <p:commandLink value="Editar" actionListener="#{medidaBean.buscar(m)}"
+                                   oncomplete="PF('wdlgEPer').show()" update="dlgEPer" />
+                    <h:commandLink value="Eliminar" style="margin-left: 10px;"
+                                   onclick="return confirm('¿Está seguro de Eliminar la Medida?')"
+                                   actionListener="#{medidaBean.eliminar(m)}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <p:dialog id="dlgNPer" widgetVar="wdlgNPer" header="Nueva Medida">
+            <h:form>
+                <h:outputLabel value="Unidad_Medida" />
+                <h:inputText value="#{medidaBean.medida.unidadmedida}" required="true" />
+
+                <h:column/>
+                <h:commandButton value="Guardar" actionListener="#{medidaBean.agregar()}" />
+            </h:form>
+        </p:dialog>
+        <p:dialog id="dlgEPer" widgetVar="wdlgEPer" header="Editar Medida">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Identificacion" />
+                    <h:inputText value="#{medidaBean.medida.unidadmedida}" required="true" />
+                    <h:commandButton value="Guardar" actionListener="#{medidaBean.actualizar()}" />
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </h:body>
+</html>

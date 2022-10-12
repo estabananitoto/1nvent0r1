@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Pedido</title>
+    <script src="https://kit.fontawesome.com/7ee19ad458.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="resources/css/venta.css">
+</head>
+<body>
+  <header>
+       
+    <div>
+ <nav class ="header"> 
+     <img class="logo" src="/inventory/Imminent_1_0_0/images/logo horizontal con slogan.png" alt="">
+     
+      <i class="icon fa-solid fa-circle-user"></i>
+      <a class="Mesero" href="index.html"> admin  </a>
+    
+     <a class="m" href="inicio de sesion inventory.html"> cerrar sesion</a>
+ <hr>	
+         
+   
+ </nav>	
+ </div>
+ </header>
+    <br>
+    <hr>
+    <div class="menu">
+
+        <a href="pedido.html" class="pedido"><button1 class="btn success1">Ingresar Pedido</button></a><br><br><br><br>
+        <a href="" class="ventas"><button1 class="btn success1">Ingresar Venta</button></a><br><br><br><br>
+        <a href="Actualizar.html" class="consultar"><button1 class="btn success1">Actualizar Pedido</button></a><br><br><br><br>
+        <a href="/inventory/Imminent_1_0_0/paper-dashboard-master/paper-dashboard-master/examples/dashboard.html" class="regresar"><button1 class="btn success1">Regresar</button></a>
+    </div>  
+    
+    <center>
+    <h1>Ingresar Venta</h1>
+  </center>
+    <br>
+    <div class="detalles">
+
+        <input type="number" id="myInput" onkeyup="myFunction()" placeholder="Buscar mesa">
+        <ul id="myUL">
+                
+                <li><a><button onclick="document.getElementById('id01').style.display='block'">Mesa 1</button></a></li>
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+
+        <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td>1217</td>
+          <td>1216</td>
+          <td>1</td>
+          <td>Stella Artois</td>
+          <td>5</td>
+          <td>25.000</td>
+          <td>1018278453</td>
+        </tr>
+
+        <tr>
+          <td>1217</td>
+          <td>1216</td>
+          <td>1</td>
+          <td>Patron 325 ml</td>
+          <td>1</td>
+          <td>105.000</td>
+          <td>1018278453</td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button><br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id01');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+<li><a><button onclick="document.getElementById('id02').style.display='block'">Mesa 2</button></a></li>
+
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+      <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td>1213</td>
+          <td>1212</td>
+          <td>2</td>
+          <td>Aguila</td>
+          <td>2</td>
+          <td>7.000</td>
+          <td>51793754</td>
+        </tr>
+
+        <tr>
+          <td>1213</td>
+          <td>1212</td>
+          <td>2</td>
+          <td>Corona Extra</td>
+          <td>6</td>
+          <td>30.000</td>
+          <td>51793754</td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button> <br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container" style="background-color:#191919">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id02');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+<li><a><button onclick="document.getElementById('id03').style.display='block'">Mesa 3</button></a></li>
+
+<div id="id03" class="modal">
+  <span onclick="document.getElementById('id03').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+      <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td>1215</td>
+          <td>1214</td>
+          <td>3</td>
+          <td>Stella Artois</td>
+          <td>5</td>
+          <td>25.000</td>
+          <td>32425262</td>
+        </tr>
+
+        <tr>
+          <td>1215</td>
+          <td>1214</td>
+          <td>3</td>
+          <td>Dom perignon</td>
+          <td>1</td>
+          <td>900.000</td>
+          <td>32425262</td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button> <br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container" style="background-color:#191919">
+      <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id03');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+<li><a><button onclick="document.getElementById('id04').style.display='block'">Mesa 4</button></a></li>
+
+<div id="id04" class="modal">
+  <span onclick="document.getElementById('id04').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+      <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td>1221</td>
+          <td>1220</td>
+          <td>4</td>
+          <td>Dom perignon</td>
+          <td>2</td>
+          <td>500.000</td>
+          <td>1018278453</td>
+        </tr>
+
+        <tr>
+          <td>1221</td>
+          <td>1220</td>
+          <td>4</td>
+          <td>Patron 325 ml</td>
+          <td>6</td>
+          <td>630.000</td>
+          <td>1018278453</td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button> <br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container" style="background-color:#191919">
+      <button type="button" onclick="document.getElementById('id04').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id04');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+<li><a><button onclick="document.getElementById('id05').style.display='block'">Mesa 5</button></a></li>
+
+<div id="id05" class="modal">
+  <span onclick="document.getElementById('id05').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+      <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Referencia: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button> <br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container" style="background-color:#191919">
+      <button type="button" onclick="document.getElementById('id05').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id05');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+<li><a><button onclick="document.getElementById('id06').style.display='block'">Mesa 6</button></a></li>
+
+<div id="id06" class="modal">
+  <span onclick="document.getElementById('id06').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+      <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Referencia: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button> <br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container" style="background-color:#191919">
+      <button type="button" onclick="document.getElementById('id06').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id06');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+<li><a><button onclick="document.getElementById('id07').style.display='block'">Mesa 7</button></a></li>
+
+<div id="id07" class="modal">
+  <span onclick="document.getElementById('id07').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+      <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td>1219</td>
+          <td>1218</td>
+          <td>7</td>
+          <td>grey goose litro</td>
+          <td>4</td>
+          <td>720.000</td>
+          <td>32425262</td>
+        </tr>
+
+        <tr>
+          <td>1219</td>
+          <td>1218</td>
+          <td>7</td>
+          <td>grey goose 750ml</td>
+          <td>6</td>
+          <td>756.000</td>
+          <td>32425262</td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button> <br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container" style="background-color:#191919">
+      <button type="button" onclick="document.getElementById('id07').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id07');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+<li><a><button onclick="document.getElementById('id08').style.display='block'">Mesa 8</button></a></li>
+
+<div id="id08" class="modal">
+  <span onclick="document.getElementById('id08').style.display='none'"
+class="close" title="Close Modal">&times;</span>
+
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="container">
+
+      <table style="width: 100%;">
+      <tr>
+        <th>ID:_Venta: </th>
+        <th>ID:_Pedido: </th>
+        <th>Mesa: </th>
+        <th>Referencia: </th>
+        <th>Nombre Prod:</th> 
+        <th>Cantidad: </th> 
+        <th>Total: </th>
+        <th>Identificacion: </th>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+      </table>
+
+<br>
+      <button type="submit" class="pago">Generar Comprobante de Pago</button> <br>
+      <button type="submit" class="venta">Guardar Venta</button>
+    </div>
+
+    <div class="container" style="background-color:#191919">
+      <button type="button" onclick="document.getElementById('id08').style.display='none'" class="cancelbtn">Cancelar</button>
+    </div>
+  </form>
+</div>
+<script>
+    var modal = document.getElementById('id08');    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+        </ul>
+
+        <div class="filtrar">
+
+            <script>
+              function myFunction() {
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById('myInput');
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName('li');
+                for (i = 0; i < li.length; i++) {
+                  a = li[i].getElementsByTagName("a")[0];
+                  txtValue = a.textContent || a.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                  } else {
+                    li[i].style.display = "none";
+                  }
+                }
+              }
+              </script>
+      </div>  
+
+    </div>
+    <br>
+</body>
+<br>
+<footer class="footer">
+	<small>&copy; 2022 <b>1NV3NT0RY</b>  - Todos los derechos reservados-</small>
+</footer>
+</html>

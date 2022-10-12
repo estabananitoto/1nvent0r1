@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Pedido</title>
+    <script src="https://kit.fontawesome.com/7ee19ad458.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="resources/css/Registrar.css">
+</head>
+<body>
+
+  <header>
+       
+    <div>
+ <nav class ="header"> 
+     <img class="logo" src="/inventory/Imminent_1_0_0/images/logo horizontal con slogan.png" alt="">
+     
+      <i class="icon fa-solid fa-circle-user"></i>
+      <a class="Mesero" href="index.html"> admin  </a>
+    
+     <a class="m" href="inicio de sesion inventory.html"> cerrar sesion</a>
+ <hr>	
+         
+   
+ </nav>	
+ </div>
+ </header>
+  
+    <br>
+    <hr>
+    <div class="menu">
+
+        <a href="#" class="pedido"><button class="btn success">Ingresar Pedido</button></a> <br><br>
+        <a href="venta.html" class="ventas"><button class="btn success">Ingresar Venta</button></a><br><br>
+        <a href="Actualizar.html" class="consultar"><button class="btn success">Actualizar Pedido</button></a><br><br>
+        <a href="/inventory/Imminent_1_0_0/paper-dashboard-master/paper-dashboard-master/examples/dashboard.html" class="regresar"><button class="btn success">Regresar</button></a><br>
+
+    </div>
+
+
+    <div class="catalogo">
+
+        <input type="text" id="mySearch" onkeyup="myfunction()" placeholder="Search.." title="Type in a category">
+
+        <ul id="myMenu">
+          <li><a href="#">Cervezas</a></li>
+          <li><a href="#">Aguardientes</a></li>
+          <li><a href="#">Cocteles</a></li>
+          <li><a href="#">Tragos</a></li>
+          <li><a href="#">Vinos</a></li>
+          <li><a href="#">Jugos</a></li>
+          <li><a href="#">Comidas</a></li>
+        </ul>
+
+        <br>
+        
+ 
+        <div class="elementos">
+          <hr>
+          <h4>ID_Pedido:</h4>
+            <hr> 
+            
+
+            Cantidad: <input class="cantidad" type="number" placeholder="Ingrese la cantidad" id="cantidad" name="cantidad" required><br>
+            Mesa: <input class="mesa" type="number" placeholder="Ingrese la Mesa" id="mesa" name="mesa" required><hr>
+            <br>
+
+
+            <input type="submit" id="guardar" value="Guardar" onclick="validateForm()" required>
+            <br>
+        
+            <br>
+            <input type="submit" id="guardarpedido" value="Guardar Pedido"> 
+           </div>
+
+
+            
+            <br>
+
+            <script>
+
+              function validateForm() {
+
+              var cantidad = document.getElementById("cantidad").value;
+              var mesa = document.getElementById("mesa").value;
+
+
+              if(cantidad == "") {
+                   alert("LLene el campo de cantidad");
+              }
+              if(mesa == "") {
+                   alert("LLene el campo de mesa");
+              }
+              if(cantidad > 50){
+
+                alert("Cantidad Invalida")
+
+              }
+              if(mesa > 12){
+
+               alert("Mesa Invalida")
+
+             }}
+ 
+            </script>
+       
+
+
+            <center>
+            <table>
+
+             <tr>
+              <th>Productos</th>
+              <th>Cantidad</th>
+              <th>Mesa</th>
+              <th>Subtotal</th>
+
+             </tr>
+
+             <tr>
+
+              <td></td>
+              <td></td>
+              <td></td>
+
+             </tr>
+
+             <tr>
+
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+
+             </tr>
+
+            </table>
+            </center>
+
+                       
+
+    </div>
+  
+
+
+
+    <div class="carta">
+
+      <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+      <ul id="myUL">
+      <li><a href="#"> Aguila 12oz	 $ 3.500,00 </a> </li>
+      <li><a href="#"> Corona Extra 12oz	 $ 5.000,00 </a> </li>
+      <li><a href="#"> Polar 12oz	 $ 4.000,00 </a> </li>
+      <li><a href="#"> Stella Artois 12oz	 $ 5.000,00 </a> </li>
+      <li><a href="#"> Dom Perignon 750ml	 $ 450.000,00 </a> </li>
+      <li><a href="#"> Malbec 750ml	 $ 40.000,00 </a> </li>
+      <li><a href="#"> malbec COPA	 $ 16.000,00 </a> </li>
+      <li><a href="#"> PATRON 750 ml	 $ 150.000,00 </a> </li>
+      <li><a href="#"> PATRON 325ml	 $ 105.000,00 </a> </li>
+      <li><a href="#"> PATRON TRAGO	 $ 25.000,00 </a> </li>
+      <li><a href="#"> GREY GOOSE LITRO	 $ 180.000,00 </a> </li>
+      <li><a href="#"> GREY GOOSE 750ml	 $ 126.000,00 </a> </li>
+      <li><a href="#"> GREY GOOSE 325ml	 $ 88.200,00 </a> </li>
+      <li><a href="#"> GREY GOOSE TRAGO	 $ 25.000,00 </a> </li>
+      <li><a href="#"> BUCHANNAS LITRO	 $ 250.000,00 </a> </li>
+      <li><a href="#"> BUCHANNAS 750ml	 $ 190.000,00 </a> </li>
+      <li><a href="#"> BUCHANNAS 325ml	 $ 140.000,00 </a> </li>
+      <li><a href="#"> BUCHANNAS TRAGO	 $ 25.000,00 </a> </li>
+      <li><a href="#"> BACARDI LITRO	 $ 120.000,00 </a> </li>
+      <li><a href="#"> BACARDI 750ml	 $ 84.000,00 </a> </li>
+      <li><a href="#"> BACARDI TRAGO	 $ 25.000,00 </a> </li>
+      <li><a href="#"> ANTIOQUEÑO LITRO	 $ 100.000,00 </a> </li>
+      <li><a href="#"> ANTIOQUEÑO 750ML	 $ 80.000,00 </a> </li>
+      <li><a href="#"> ANTIOQUEÑO 325ML	 $ 60.000,00 </a> </li>
+      <li><a href="#"> ANTIOQUEÑO TRAGO	 $ 15.000,00 </a> </li>
+      <li><a href="#"> BOMBAY SAPPHIRE LITRO	 $ 150.000,00 </a> </li>
+      <li><a href="#"> BOMBAY SAPPHIRE TRAGO	 $ 20.000,00 </a> </li>
+      <li><a href="#"> BOMBAY SAPPHIRE 750ML	 $ 120.000,00 </a> </li>
+      <li><a href="#"> OLD PARR 750ML 	 $ 160.000,00 </a> </li>
+      <li><a href="#"> OLD PARR TRAGO	 $ 25.000,00 </a> </li>
+    </ul>
+
+     </div>
+
+    <div class="elementos">
+
+    <script>
+        function myfunction() {
+          var input, filter, ul, li, a, i;
+          input = document.getElementById("mySearch");
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myMenu");
+          li = ul.getElementsByTagName("li");
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+    </script>
+    </div>
+
+    <div class="filtrar">
+
+      <script>
+        function myFunction() {
+          var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById('myInput');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myUL");
+          li = ul.getElementsByTagName('li');
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+        </script>
+</div>  
+<br>
+</body>
+
+<footer class="footer">
+	<small>&copy; 2022 <b>1NV3NT0RY</b>  - Todos los derechos reservados-</small>
+</footer>
+
+</html>

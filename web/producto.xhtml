@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>CRUD Productos</title>
+          <h:outputStylesheet library="css" name="style.css"/>
+           <body bgcolor="#191919"></body>
+    </h:head>
+    <h:body>
+           <h:graphicImage class="logo"  value="/resources/images/logito.png"></h:graphicImage>
+           <hr></hr>
+        <p:growl id="msj" showDetail="true" skipDetailIfEqualsSummary="true"/>
+        <f:event type="preRenderView" listener="#{productosBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{categoriaBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{medidaBean.listar()}"/>
+
+        <h:form>
+            <h2 style="color: #FFBF00;">CRUD Productos</h2>
+            <p:commandButton value="Nuevo Producto" onclick="PF('wdlgProd').show()"/>
+            <p:commandButton ajax="false" value="XLS" style="margin-left: 15px;">
+                <p:dataExporter type="xls" target="tblProd" fileName="Productos"/>
+            </p:commandButton>
+            <p:commandButton ajax="false" value="PDF" style="margin-left: 15px;">
+                <p:dataExporter type="pdf" target="tblProd" fileName="Productos"/>
+            </p:commandButton>
+            <br/><br/>
+
+            <p:dataTable id="tblProd" widgetVar="wtblProd" value="#{productosBean.lstPro}"
+                         filteredValue="#{productosBean.lstProFiltrada}" var="prod"
+                         emptyMessage="No se encuentran Registros"
+                         paginator="true" paginatorPosition="bottom"
+                         paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}" rows="5"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                         rowsPerPageTemplate="5,10,{ShowAll|'Todos'}">
+
+                <f:facet name="header">
+                    <div align="right">
+                        <span>Buscar:</span>
+                        <p:inputText id="globalFilter" onkeyup="PF('wtblProd').filter()"/>
+                    </div>
+                </f:facet>
+
+                <p:column headerText="Referencia">
+                    <p:outputLabel value="#{prod.referencia}"/>
+                </p:column>
+
+                <p:column headerText="Nombre" filterBy="#{prod.nombre}" filterMatchMode="contains">
+                    <p:outputLabel value="#{prod.nombre}"/>
+                </p:column>
+
+                <p:column headerText="id_categoria" filterBy="#{prod.cat.id_categoria}" filterMatchMode="contains">
+                    <p:outputLabel value="#{prod.cat.id_categoria}"/>
+                </p:column>
+
+                <p:column headerText="id_medida" filterBy="#{prod.m.id_medida}" filterMatchMode="contains">
+                    <p:outputLabel value="#{prod.m.id_medida}"/>
+                </p:column>
+
+                <p:column headerText="precio_compra">
+                    <p:outputLabel value="#{prod.precio_compra}"/>
+                </p:column>
+
+                <p:column headerText="precio_venta">
+                    <p:outputLabel value="#{prod.precio_venta}"/>
+                </p:column>
+
+                <p:column headerText="impuesto">
+                    <p:outputLabel value="#{prod.impuesto}"/>
+                </p:column>
+
+                <p:column headerText="Opciones" exportable="false">
+                    <p:commandLink value="Editar" actionListener="#{productosBean.buscar(prod)}"  
+                                   oncomplete="PF('wdlgEProd').show()" update="dlgEProd"/>
+                    <h:commandLink value="Eliminar" actionListener="#{productosBean.eliminar(prod)}"
+                                   style="margin-left: 10px;"  onclick="return confirm('¡¡¿Está seguro de Eliminar el Producto?!!')"/>
+                </p:column>
+                <p:commandButton value="Regresar" action="admin"/>
+
+            </p:dataTable>
+        </h:form>
+
+        <p:dialog header="Nuevo Producto" id="dlgNProd" widgetVar="wdlgProd" width="500">
+            <h:form enctype="multipart/form-data">
+                <h:panelGrid columns="2">
+
+                    <p:outputLabel value="Referencia"/>
+                    <p:inputText value="#{productosBean.producto.referencia}" required="true"/>
+
+                    <p:outputLabel value="Nombre"/>
+                    <p:inputText value="#{productosBean.producto.nombre}" required="true"/>
+
+                    <p:outputLabel value="id_categoria"/>
+                    <p:selectOneMenu value="#{productosBean.producto.id_categoria}">
+                        <f:selectItems value="#{categoriaBean.lstcat}" var="cat" itemLabel="#{cat.id_categoria}" itemValue="#{cat.id_categoria}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="id_medida"/>
+                    <p:selectOneMenu value="#{productosBean.producto.id_medida}">
+                        <f:selectItems value="#{medidaBean.lstmed}" var="med" itemLabel="#{med.id_medida}" itemValue="#{med.id_medida}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Precio_compra"/>
+                    <p:inputText value="#{productosBean.producto.precio_compra}" required="true"/>
+
+                    <p:outputLabel value="precio_venta"/>
+                    <p:inputText value="#{productosBean.producto.precio_venta}" required="true"/>
+
+                    <p:outputLabel value="impuesto"/>
+                    <p:inputText value="#{productosBean.producto.impuesto}" required="true"/>
+
+                    <p:column/>
+                    <p:commandButton ajax="false" value="Guardar" actionListener="#{productosBean.agregar()}" update="tblProd"/>
+
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog header="Editar Producto" id="dlgEProd" widgetVar="wdlgEProd" width="500">
+            <h:form enctype="multipart/form-data">
+                <h:panelGrid columns="2">
+
+                    <p:outputLabel value="Referencia"/>
+                    <p:inputText value="#{productosBean.producto.referencia}" required="true"/>
+
+                    <p:outputLabel value="Nombre"/>
+                    <p:inputText value="#{productosBean.producto.nombre}" required="true"/>
+
+                    <p:outputLabel value="id_categoria"/>
+                    <p:selectOneMenu value="#{productosBean.producto.id_categoria}">
+                        <f:selectItems value="#{categoriaBean.lstcat}" var="cat" itemLabel="#{cat.id_categoria}" itemValue="#{cat.id_categoria}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="id_medida"/>
+                    <p:selectOneMenu value="#{productosBean.producto.id_medida}">
+                        <f:selectItems value="#{medidaBean.lstmed}" var="med" itemLabel="#{med.id_medida}" itemValue="#{med.id_medida}"/>
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Precio_compra"/>
+                    <p:inputText value="#{productosBean.producto.precio_compra}" required="true"/>
+
+                    <p:outputLabel value="precio_venta"/>
+                    <p:inputText value="#{productosBean.producto.precio_venta}" required="true"/>
+
+                    <p:outputLabel value="impuesto"/>
+                    <p:inputText value="#{productosBean.producto.impuesto}" required="true"/>
+
+                    <p:column/>
+                    <p:commandButton ajax="false" value="Guardar" actionListener="#{productosBean.actualizar()}" update="tblProd"/>
+                </h:panelGrid>
+            
+            </h:form>
+            
+        </p:dialog>
+           <footer class="footer">
+        <small>&copy; 2022 <b>1NV3NT0RY</b>  - Todos los derechos reservados-</small>
+        </footer>
+    </h:body>
+      
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Crud_Categoria</title>
+        <body bgcolor="#191919"></body>
+        <h:outputStylesheet  library="css" name="style.css"/>
+       
+    </h:head>
+    <h:body>
+        <h:graphicImage class="logo" value="/resources/images/logito.png"></h:graphicImage>
+        <f:event type="preRenderView" listener="#{categoriaBean.listar()}"/>
+        <h:form>
+            <center><h2 style="color: #ffbf00;">Categoria</h2></center>
+            <p:commandButton value="Crear Categoria"  onclick="PF('wdlgNPer').show()" style="color: #ffbf00; background-color: #191919"/>
+            <p:commandButton ajax="false" value="XLS" style="margin-left: 10px;">
+                <p:dataExporter type="xls" target="tblCat" fileName="Categoria"/> 
+            </p:commandButton>
+            <p:commandButton ajax="false" value="PDF" style="margin-left: 10px;">
+                <p:dataExporter type="pdf" target="tblCat" fileName="Categoria"/>
+            </p:commandButton>
+
+            <p:dataTable value="#{categoriaBean.lstcat}" filteredValue="#{categoriaBean.lstcatFiltrada}"
+                         var="cat" rows="5" paginator="true" paginatorPosition="bottom" widgetVar="wtblPer" id="tblcat"
+                         paginatorTemplate="{CurrentPageReport} {PageLinks} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                         rowsPerPageTemplate="5,10,{ShowAll|'Todos'}"> 
+                <f:facet name="header">
+                    <div align="right">
+                        <span>Buscar:</span>
+                        <p:inputText id="globalFilter" onkeyup="PF('wtblPer').filter()" />
+                    </div>
+                </f:facet>
+
+                <p:column filterBy="#{cat.id_categoria}" filterMatchMode="contains">
+                    <f:facet name="header">id_categoria</f:facet>
+                    <h:outputLabel value="#{cat.id_categoria}"/>
+                </p:column>
+
+                <p:column filterBy="#{cat.nomCategoria}" filterMatchMode="contains">
+                    <f:facet name="header">nomCategoria</f:facet>
+                    <h:outputLabel value="#{cat.nomCategoria}"/>
+                </p:column>
+
+                <p:column exportable="false">
+                    <f:facet name="header">Editar</f:facet>
+                    <p:commandLink value="Editar" actionListener="#{categoriaBean.buscar(cat)}"
+                                   oncomplete="PF('wdlgEPer').show()" update="dlgEPer" />
+                    <h:commandLink value="Eliminar" style="margin-left: 10px;"
+                                   onclick="return confirm('¡¡¿Está seguro de Eliminar la Categoria?!!')"
+                                   actionListener="#{categoriaBean.eliminar(cat)}"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <p:dialog id="dlgNPer" widgetVar="wdlgNPer" header="Nuevo Categoria">
+            <h:form>
+                <h:outputLabel value="Nombre_categoria" />
+                <h:inputText value="#{categoriaBean.categoria.nomCategoria}" required="true" />
+
+                <h:column/>
+                <h:commandButton value="Guardar" actionListener="#{categoriaBean.agregar()}" />
+            </h:form>
+        </p:dialog>
+        <p:dialog id="dlgEPer" widgetVar="wdlgEPer" header="Editar categoria">
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Identificacion" />
+                    <h:inputText value="#{categoriaBean.categoria.nomCategoria}" required="true" />
+                    <h:commandButton value="Guardar" actionListener="#{categoriaBean.actualizar()}" />
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+        
+        <h:form>
+       
+               
+               </h:form>
+    </h:body>
+</html>
